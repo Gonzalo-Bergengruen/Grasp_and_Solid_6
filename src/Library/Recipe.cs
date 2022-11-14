@@ -69,17 +69,17 @@ namespace Full_GRASP_And_SOLID
         public bool Cooked{get;set;}
         public int GetCookTime()
         {
-            int tiempo = 0;
+            int time = 0;
             foreach (BaseStep step in this.steps)
             {
-                tiempo += step.Time;
+                time += step.Time;
             }
-            return tiempo;
+            return time;
         }
 
         public void Cook()
         {
-            ClientTimer cliente = new ClientTimer(this,GetCookTime());
+            ClientTimer client = new ClientTimer(this,GetCookTime());
         }
     }
 }
