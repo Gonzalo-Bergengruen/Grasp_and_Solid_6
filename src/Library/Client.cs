@@ -2,16 +2,16 @@ namespace Full_GRASP_And_SOLID
 {
     public class ClientTimer : TimerClient
     {
-        public Recipe Recipe{get;set;}
-        public ClientTimer (Recipe recipe, int valor)
+        public Recipe recipe{get;set;}
+        public ClientTimer (Recipe recipe, int time)
         {
-            this.Recipe = recipe;
+            this.recipe = recipe;
             CountdownTimer countdownTimer = new CountdownTimer();
-            countdownTimer.Register(valor,this);
+            countdownTimer.Register(time,this);
         }
         public void TimeOut()
         {
-            this.Recipe.Cooked = true;
+            this.recipe.Cooked = true;
         }
     }
 }
