@@ -11,11 +11,15 @@ namespace Full_GRASP_And_SOLID
 {
     public class Recipe : IRecipeContent // Modificado por DIP
     {
+        public Recipe ()
+        {
+            Cooked = false;
+        }
         // Cambiado por OCP
         private IList<BaseStep> steps = new List<BaseStep>();
 
         public Product FinalProduct { get; set; }
-        public bool Cooked {get; set;} = false;
+
         // Agregado por Creator
         public void AddStep(Product input, double quantity, Equipment equipment, int time)
         {
@@ -62,17 +66,20 @@ namespace Full_GRASP_And_SOLID
 
             return result;
         }
-        public int GetCookTime(){
-            int time = 0;
+        public bool Cooked{get;set;}
+        public int GetCookTime()
+        {
+            int tiempo = 0;
             foreach (BaseStep step in this.steps)
             {
-                time += step.Time;
+                tiempo += step.Time;
             }
-            return time;
+            return tiempo;
         }
+
         public void Cook()
         {
-            ClientTimer clientTimer = new ClientTimer(this, this.GetCookTime());
+            ClientTimer cliente = new ClientTimer(this,GetCookTime());
         }
     }
 }
